@@ -1,4 +1,10 @@
+-- SQL Server 2012 ©K‘ƒVƒŠ[ƒY No.6
+-- SQL11_SelfLearning06_TSQL2.pdf
+--
+-- bcp tsystem.dbo.tbl_item format nul -S .\sqlexpress -T -c -t "," -f .\test020.fmt
+--
 use tsystem
+
 merge into tbl_item
   using openrowset (bulk 'd:\data\csv\test020.csv',
                     formatfile = 'd:\data\csv\test020.fmt') bulk1
