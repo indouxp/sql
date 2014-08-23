@@ -3,7 +3,11 @@ param([string]$sqlFile)
 [string]$serverName = ".\sqlexpress"
 [string]$database = "tsystem"
 
-sqlcmd -E -S $serverName -d $database -i $sqlFile -u -b -w 80 -W
+# -W:後続のスペース削除
+# -b:エラー時にバッチを中止
+# -E:セキュリティ接続
+# -S サーバー
+sqlcmd -E -S $serverName -d $database -i $sqlFile -b -w 120 -W
 if (-not $?) {
   exit $LastExitCode
 }
